@@ -34,7 +34,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: ./config/env/production.env
+    env_file: ./config/env/development.env
     ports:
       - '${BE_EXPORT_PORT}:${BE_PORT}'
     links:
