@@ -9,6 +9,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { AdministrativeModule } from './administrative/administrative.module';
 import { SellDemandModule } from './buy-demand/buy-demand.module';
+import { ContactModule } from './contact/contact.module';
 
 
 @Module({
@@ -27,6 +28,7 @@ import { SellDemandModule } from './buy-demand/buy-demand.module';
     PrismaModule,
     AdministrativeModule,
     SellDemandModule,
+    ContactModule
   ],
 })
 export class AppModule {}
