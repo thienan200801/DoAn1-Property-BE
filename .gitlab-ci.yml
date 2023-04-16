@@ -1,0 +1,31 @@
+stages:
+  - deploy
+
+deploy test:
+  only:
+    - deploy/test
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@103.142.137.207 "
+        cd sonthuy-real-estate/sonthuy-real-estate-be;
+        git fetch;
+        git checkout deploy/test;
+        git pull;
+        docker-compose up -d --build"
+
+deploy production:
+  only:
+    - deploy/production
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@103.48.192.223 "
+      cd sonthuy-real-estate/sonthuy-real-estate-be;
+      git fetch;
+      git checkout deploy/production;
+      git pull;
+      docker compose up -d --build"
+
