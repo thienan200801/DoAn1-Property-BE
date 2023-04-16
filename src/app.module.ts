@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { BookmarkModule } from './bookmark/bookmark.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
+import { AdministrativeModule } from './administrative/administrative.module';
+import { SellDemandModule } from './buy-demand/buy-demand.module';
 
 
 @Module({
@@ -23,6 +25,8 @@ import { UserModule } from './user/user.module';
     UserModule,
     BookmarkModule,
     PrismaModule,
+    AdministrativeModule,
+    SellDemandModule,
   ],
 })
 export class AppModule {}
