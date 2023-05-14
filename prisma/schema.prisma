@@ -75,7 +75,7 @@ enum EstateCategory {
 enum PostStatus {
   DRAFT
   PUBLISHED
-  HIDDEN
+  REMOVE
 }
 
 enum PostType {
