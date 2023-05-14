@@ -22,12 +22,13 @@ export class EditBuyDemandDto {
     description: string;
   
     @IsString()
+    @IsOptional()
+    district: string;
+    
+    @IsString()
     @IsNotEmpty()
     province: string;
   
-    @IsString()
-    @IsOptional()
-    district: string;
   
     @IsString()
     @IsOptional()
