@@ -29,14 +29,15 @@ export class CreateBuyDemandDto {
   @IsString()
   @IsOptional()
   description: string;
+  
+  @IsString()
+  @IsOptional()
+  district: string;
 
   @IsString()
   @IsNotEmpty()
   province: string;
 
-  @IsString()
-  @IsOptional()
-  district: string;
 
   @IsString()
   @IsOptional()
