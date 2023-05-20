@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  postgres_db:
+    container_name: sonthuy_db
+    image: postgres:13
+    volumes:
+      - ./postgres_db/var/lib/postgresql:/var/lib/postgresql
+    ports:
+      - '${POSTGRES_EXPORT_PORT}:${POSTGRES_PORT}'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sonthuyorgpassworddb
+      POSTGRES_DB: nest
+    networks:
+      - sonthuyorg
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: sonthuy_pgadmin
+    depends_on:
+      - postgres_db
+    ports:
+      - '${PG_ADMIN_EXPORT_PORT}:${PG_ADMIN_PORT}'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sonthuyorg@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: sonthuy_supersecrect
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    restart: unless-stopped
+    networks:
+      - sonthuyorg
+  nestapp:
+    container_name: sonthuy_be
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ./config/env/development.env
+    ports:
+      - '${BE_EXPORT_PORT}:${BE_PORT}'
+    links:
+      - postgres_db
+    depends_on:
+      - postgres_db
+    environment:
+      WAIT_HOSTS: 'postgres_db:${POSTGRES_PORT}'
+    networks:
+      - sonthuyorg
+networks:
+  sonthuyorg:
+    driver: bridge
