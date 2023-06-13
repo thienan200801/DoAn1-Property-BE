@@ -80,19 +80,4 @@ describe('ContactController', () => {
     })).toEqual({...dto})
     expect(mockContact.createContact).toHaveBeenCalled();
   });
-
-  // it('should edit contact by id', () => {
-  //   const dto = {
-  //     noteByAdmin: 'nothing',
-  //     processingStatus: "WORKING"
-  //   }
-  //   expect(controller.editContactById(1, {
-  //     noteByAdmin: 'nothing',
-  //     processingStatus: "WORKING"
-  //   })).toEqual({
-  //     id: 1,
-  //     ...dto
-  //   });
-  // });
-
 });

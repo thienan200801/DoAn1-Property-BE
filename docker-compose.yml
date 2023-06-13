@@ -13,21 +13,21 @@ services:
       POSTGRES_DB: nest
     networks:
       - sonthuyorg
-  # pgadmin:
-  #   image: dpage/pgadmin4
-  #   container_name: sonthuy_pgadmin
-  #   depends_on:
-  #     - postgres_db
-  #   ports:
-  #     - '${PG_ADMIN_EXPORT_PORT}:${PG_ADMIN_PORT}'
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: sonthuyorg@pgadmin.org
-  #     PGADMIN_DEFAULT_PASSWORD: sonthuy_supersecrect
-  #   volumes:
-  #     - ./pgadmin-data:/var/lib/pgadmin
-  #   restart: unless-stopped
-  #   networks:
-  #     - sonthuyorg
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: sonthuy_pgadmin
+    depends_on:
+      - postgres_db
+    ports:
+      - '${PG_ADMIN_EXPORT_PORT}:${PG_ADMIN_PORT}'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sonthuyorg@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: sonthuy_supersecrect
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    restart: unless-stopped
+    networks:
+      - sonthuyorg
   nestapp:
     container_name: sonthuy_be
     restart: always
