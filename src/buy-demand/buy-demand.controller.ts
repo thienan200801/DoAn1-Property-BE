@@ -13,6 +13,7 @@ import {
     Query,
     ValidationPipe,
   } from '@nestjs/common';
+  import { GetUser } from '../auth/decorator';
   import { BuyDemandService } from './buy-demand.service';
   import {
     CreateBuyDemandDto,
@@ -77,7 +78,7 @@ import {
         await this.buyDemandService.getBuyDemandById(buyDemandId);
       if (!buyDemand) {
         throw new NotFoundException(
-          'Buy Demand Not Found',
+          'BuyDemand Not Found',
         );
       }
       return this.buyDemandService.deleteBuyDemandById(

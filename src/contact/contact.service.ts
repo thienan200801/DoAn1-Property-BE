@@ -18,6 +18,10 @@ export class ContactService {
     });
   }
 
+  getAllContacts() {
+    return this.prisma.contact.findMany({})
+  }
+
   getContactById(contactId: number) {
     return this.prisma.contact.findFirst({
       where: {
